@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :words
     resources :comments
     resources :likes, only: [:create, :destroy]
+    resources :contacts
   end
   
 
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :users
     resources :words
+    resources :contacts
   end
 
   scope module: :users do

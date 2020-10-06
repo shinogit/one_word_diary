@@ -23,15 +23,15 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <li><%= link_to ' Home', homes_about_path, class: 'nab-item nav-link' %></li>
-          <li><%= link_to ' Users', homes_about_path, class: 'nab-item nav-link' %></li>
-          <li><%= link_to ' Words', homes_about_path, class: 'nab-item nav-link' %></li>
-          <li><%= link_to ' Contact', homes_about_path, class: 'nab-item nav-link' %></li>
-          <li><%= link_to ' Logout', destroy_user_session_path, method: :delete, class: 'nab-item nav-link' %></li>
+          <li><%= link_to 'One Word Diaryとは？', homes_about_path, class: 'nab-item nav-link' %></li>
+          <li><%= link_to '利用メンバー', users_path, class: 'nab-item nav-link' %></li>
+          <li><%= link_to 'ひとこと一覧', words_path, class: 'nab-item nav-link' %></li>
+          <li><%= link_to 'お問い合わせ', contacts_path, class: 'nab-item nav-link' %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nab-item nav-link' %></li>
         <% else %>
-          <li><%= link_to ' Home', homes_about_path, class: 'nab-item nav-link' %></li>
-          <li><%= link_to ' Log in', new_user_session_path, class: 'nab-item nav-link' %></li>
-          <li><%= link_to ' Sign up', new_user_registration_path, class: 'nab-item nav-link' %></li>
+          <li><%= link_to 'One Word Diaryとは？', homes_about_path, class: 'nab-item nav-link' %></li>
+          <li><%= link_to 'ログイン', new_user_session_path, class: 'nab-item nav-link' %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: 'nab-item nav-link' %></li>
         <% end %>
         </ul>
       </div>
