@@ -73,4 +73,6 @@ group :production do
   gem 'mysql2'
 end
 
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'
 gem 'devise'

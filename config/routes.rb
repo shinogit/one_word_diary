@@ -4,13 +4,14 @@ Rails.application.routes.draw do
   get 'homes/about'
 
   # ------------------------ユーザ側------------------------
+  devise_for :users
   scope module: :users do
     resources :users
     resources :words
     resources :comments
     resources :likes, only: [:create, :destroy]
   end
-  devise_for :users
+  
 
   # ------------------------管理者側------------------------
   namespace :admins do
