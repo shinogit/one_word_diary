@@ -1,2 +1,63 @@
-<h1>Users::Words#index</h1>
-<p>Find me in app/views/users/words/index.html.erb</p>
+<div class="row">
+	<div class="col-xs-3">
+
+		<h2>User info</h2>
+		<%# <%= render 'users/profile', user: current_user %> %>
+
+		<h2>New word</h2>
+		<%# <%= render 'words/newform', word: @new_word %> %>
+
+	</div>
+
+	<div class="col-xs-9">
+		<h2>Words index</h2>
+		<!--words一覧 -->
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Title</th>
+					<th>Opinion</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @words.each do |word| %>
+				<tr>
+					<td>
+						<%= link_to user_path(word.user) do %>
+							<%= attachment_image_tag(word.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
+						<% end %>
+					</td>
+					<td><%= link_to word.title, word_path(word), class: "word_#{word.id}" %></td>
+					<td><%= word.body %></td>
+
+					<!-- ここからイイネ表示 -->
+					<% if word.favorited_by?(current_user) %>　
+						<td>
+							<%= link_to word_favorites_path(word), method: :delete do %>
+								<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+								<%= word.favorites.count %> いいねしたよ
+							<% end %>
+						</td>
+					<% else %>
+						<td>
+							<%= link_to word_favorites_path(word), method: :post do %>
+								<i class="fa fa-heart-o" aria-hidden="true"></i>
+								<%= word.favorites.count %> いいねしてね
+							<% end %>
+						</td>
+					<% end %>
+					<!-- ここまでイイネ表示 -->
+
+					<td><%= "コメント数:#{word.comments.count}" %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<!--words一覧 -->
+
+	</div>
+</div>
