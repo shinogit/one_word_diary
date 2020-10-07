@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+
+		<h1>Editing Book</h1>
+
+		<%= render "words/newform", word: @word %>
+		<%= link_to "Show", word_path(@word), class: "word_#{@word.id}" %>
+		<%= link_to "Back", words_path, class: "back" %>
+
+	</div>
+	<div class="col-md-3"></div>
+
+</div>
