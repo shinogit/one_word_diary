@@ -1,5 +1,6 @@
-class Users::UsersController < ApplicationController
+class Users::UsersController < Users::Base
   def index
+    @users = User.all
   end
 
   def show

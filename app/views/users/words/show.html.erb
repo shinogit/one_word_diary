@@ -23,7 +23,7 @@
         <td><%= link_to @word.title, words_path(@word) %></td>
         <td><%= @word.body %></td>
         <!-- ここからイイネ表示 -->
-        <% if @word.favorited_by?(current_user) %>　
+        <% if @word.favorited_by?(current_user) %>
         <td>
           <%= link_to word_favorites_path(@word), method: :delete do %>
           <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>

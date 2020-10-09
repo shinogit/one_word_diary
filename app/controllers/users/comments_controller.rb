@@ -1,4 +1,4 @@
-class Users::CommentsController < ApplicationController
+class Users::CommentsController < Users::Base
   def index
   end
 

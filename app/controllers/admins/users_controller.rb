@@ -1,4 +1,5 @@
 class Admins::UsersController < ApplicationController
+  
   def index
     @users = User.all  
   end
@@ -14,4 +15,5 @@ class Admins::UsersController < ApplicationController
 
   def destroy
   end
+  
 end
