@@ -1,4 +1,4 @@
-class Users::LikesController < ApplicationController
+class Users::LikesController < Users::Base
   def create
   end
 

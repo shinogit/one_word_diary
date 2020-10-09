@@ -1,4 +1,4 @@
-class Users::ContactsController < ApplicationController
+class Users::ContactsController < Users::Base
   def index
   end
 

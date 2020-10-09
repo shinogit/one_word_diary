@@ -1,29 +1,36 @@
-<h2>Sign up</h2>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <%= image_tag "icon_login.svg", id: "icon", alt: "User Icon", size: "30x30" %>
+      <p>新規登録</p>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <!-- Login Form -->
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+    <div class="field">
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", id: "login", class: "fadeIn second", placeholder: "名前" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :nick_name, autocomplete: "nick_name", id: "login", class: "fadeIn second", placeholder: "ニックネーム" %>
+    </div>
+    <div class="field">
+      <%= f.email_field :email, autocomplete: "email", id: "login", class: "fadeIn second", placeholder: "メールアドレス" %>
+    </div>
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "new-password", id: "password", class: "fadeIn third", placeholder: "パスワード（#{@minimum_password_length}文字以上）" %>
+    </div>
+    <div class="field">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "password", class: "fadeIn third", placeholder: "パスワード再入力"  %>
+    </div>
+    <div class="actions">
+      <%= f.submit "新規登録", class: "fadeIn fourth" %>
+    </div>
+
+  <% end %>
+
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

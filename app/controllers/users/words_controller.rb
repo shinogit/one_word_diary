@@ -1,4 +1,4 @@
-class Users::WordsController < ApplicationController
+class Users::WordsController < Users::Base
 
   before_action :ensure_correct_user,{only: [:edit,:update,:destroy]}
 

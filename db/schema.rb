@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_10_05_134906) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "word_id"
-    t.text "comment"
+    t.text "body", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 2020_10_05_134906) do
   end
 
   create_table "words", force: :cascade do |t|
-    t.string "title"
-    t.text "word"
+    t.string "title", default: "", null: false
+    t.text "body", default: "", null: false
     t.string "img_id"
     t.datetime "start_time"
     t.datetime "created_at", null: false
