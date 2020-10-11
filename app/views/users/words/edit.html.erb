@@ -1,13 +1,23 @@
-<div class="row">
-	<div class="col-md-6 col-md-offset-3">
+<%= form_with(model: @word, local: true) do |form| %>
 
-		<h1>Editing Book</h1>
+  <div class="title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
 
-		<%= render "words/newform", word: @word %>
-		<%= link_to "Show", word_path(@word), class: "word_#{@word.id}" %>
-		<%= link_to "Back", words_path, class: "back" %>
+    <div class="time">
+    <%= form.label :start_time %>
+    <%= form.datetime_select :start_time %>
+  </div>
 
-	</div>
-	<div class="col-md-3"></div>
+  <div class="body">
+    <%= form.label :body %>
+    <%= form.text_field :body %>
+  </div>
 
-</div>
+
+  <div class="submit">
+    <%= form.submit %>
+  </div>
+
+<% end %>

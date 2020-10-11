@@ -1,27 +1,35 @@
 class Users::WordsController < Users::Base
 
-  before_action :ensure_correct_user,{only: [:edit,:update,:destroy]}
+  def index
+    @words = Word.all
+    @user = current_user
+    @users = User.all
+  end
+
+  def new
+    @word = Word.new
+  end
 
   def show
     @word = Word.find(params[:id])
-    @create_word = Word.new
-    @comment = Comment.new
-  end
-
-  def index
-    @words = Word.all
-    @new_word = Word.new
   end
 
   def create
-    @new_word = Word.new(word_params)
-    @new_word.user_id = current_user.id
-    if @new_word.save
-      redirect_to word_path(@new_word), notice: "You have created word successfully."
+    word = Word.create(word_params)
+    word.user_id = current_user.id
+    if word.save
+      redirect_to word_path(@word.id),notice: "「ひとこと」を記録できました！　あしたも「ひとこと」を記録しよう！"
     else
-      @words = Word.all
-      render "index"
+      words = Word.all
+      user = current_user
+      render :index
     end
+  end
+
+  def destroy
+    @word = Word.find(params[:id])
+    @word.destroy
+    redirect_to words_path, notice:"「ひとこと」を削除しました"
   end
 
   def edit
@@ -36,29 +44,16 @@ class Users::WordsController < Users::Base
   def update
     @word = Word.find(params[:id])
     if @word.update(word_params)
-      redirect_to word_path(@word), notice: "You have updated word successfully."
+      redirect_to words_path, notice: "「ひとこと」を編集しました"
     else
-      render "edit"
-    end
-  end
-
-  def destroy
-    @word = Word.find(params[:id])
-    @word.destroy
-    redirect_to words_path
-  end
-
-  def ensure_correct_user
-    @word = Word.find(params[:id])
-    if @word.user_id != current_user.id
-      flash[:notice] = "権限がありません"
-    redirect_to words_path
+      render 'edit'
     end
   end
 
   private
 
   def word_params
-    params.require(:word).permit(:title, :body)
+    params.require(:word).permit(:title, :body, :start_time)
   end
+
 end

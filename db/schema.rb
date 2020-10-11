@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_10_05_134906) do
     t.string "title", default: "", null: false
     t.text "body", default: "", null: false
     t.string "img_id"
+    t.string "user_id"
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

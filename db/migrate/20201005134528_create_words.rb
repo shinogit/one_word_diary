@@ -4,6 +4,7 @@ class CreateWords < ActiveRecord::Migration[5.2]
       t.string :title,        null: false, default: ""
       t.text :body,           null: false, default: ""
       t.string :img_id
+      t.string :user_id
       t.datetime :start_time
 
       t.timestamps

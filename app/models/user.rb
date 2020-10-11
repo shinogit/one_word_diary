@@ -6,4 +6,8 @@ class User < ApplicationRecord
         
   attachment :img
 
+  has_many :words
+  has_many :comments
+  has_many :likes
+
 end
