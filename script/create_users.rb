@@ -1,12 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
+# $ bin/rails runner script/create_users.rb   をnginxサーバ内で実行することで初期データを投入できる
 
 # 初期ユーザー
 User.create!(email: 'a@a', password: 'aaaaaa', name: 'テスト名前a', nick_name: 'てすたーA', introduction: 'テスト名前aです。ニックネームはてすたーAです。4649!', is_deleted: false)
