@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OneWordDiary</title>
+    <title>One Word Diary</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -32,9 +32,45 @@
             </button>
 
             <div class='collapse navbar-collapse' id='navbarColor02'>
-              <ul class='navbar-nav mr-auto'>
-              <% if user_signed_in? %>
-              <!---------------------- ログイン後 ---------------------->
+            <!---------------------- userログイン ---------------------->
+              
+                <% if user_signed_in? %>
+                <ul class='navbar-nav mr-auto'>
+                  <li class='nav-item'>
+                    <%= link_to homes_about_path, class: 'nav-link' do %>
+                      One Word Diaryとは？
+                    <% end %>
+                  </li>
+                  <li class='nav-item'>
+                    <%= link_to users_path, class: 'nav-link' do %>
+                      利用メンバー
+                    <% end %>
+                  </li>
+                  <li class='nav-item'>
+                    <%= link_to words_path, class: 'nav-link' do %>
+                      ひとこと一覧
+                    <% end %>
+                  </li>
+                  <li class='nav-item'>
+                    <%= link_to contacts_path, class: 'nav-link' do %>
+                      お問い合わせ
+                    <% end %>
+                  </li>
+                  <li class='nav-item'>
+                    <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+                      ログアウト
+                    <% end %>
+                    <li class='nav-item'>
+                    <%= link_to user_path(current_user), class: 'nav-link' do %>
+                      <%= "ようこそ！「#{current_user.name}」さん" %>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+              <!---------------------- adminログイン ---------------------->
+             
+                <% if admin_signed_in? %>
+                 <ul class='navbar-nav mr-auto'>
                 <li class='nav-item'>
                   <%= link_to homes_about_path, class: 'nav-link' do %>
                     One Word Diaryとは？
@@ -57,33 +93,33 @@
                 </li>
                 <li class='nav-item'>
                   <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
-                    ログアウト
-                  <% end %>
-                </li>
-                <% else %>
-                <!---------------------- ログイン前 ---------------------->
-                <li class='nav-item'>
-                  <%= link_to homes_about_path, class: 'nav-link' do %>
-                    One Word Diaryとは？
-                  <% end %>
-                </li>
-                <li class='nav-item'>
-                  <%= link_to new_user_session_path, class: 'nav-link' do %>
-                    ログイン
-                  <% end %>
-                </li>
-                <li class='nav-item'>
-                  <%= link_to new_user_registration_path, class: 'nav-link' do %>
-                    新規登録
+                    ログアウトadmin
                   <% end %>
                 </li>
                 <% end %>
               </ul>
-              <!---------------------- 検索窓（仮） ---------------------->
-              <form class='form-inline my-2 my-lg-0'>
-                <input class='form-control mr-sm-2' type='text' placeholder='Search'>
-                <button class='btn btn-secondary my-2 my-sm-0' type='submit'>Search</button>
-              </form>
+              <!---------------------- ログイン前 ---------------------->
+              
+                <% unless user_signed_in? || admin_signed_in? %>
+                <ul class='navbar-nav mr-auto'>
+                  <li class='nav-item'>
+                    <%= link_to homes_about_path, class: 'nav-link' do %>
+                      One Word Diaryとは？
+                    <% end %>
+                  </li>
+                  <li class='nav-item'>
+                    <%= link_to new_user_session_path, class: 'nav-link' do %>
+                      ログイン
+                    <% end %>
+                  </li>
+                  <li class='nav-item'>
+                    <%= link_to new_user_registration_path, class: 'nav-link' do %>
+                      新規登録
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+              
             </div>
           </nav>
         </div>

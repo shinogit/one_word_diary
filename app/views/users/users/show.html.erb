@@ -1,2 +1,17 @@
-<h1>Users::Users#show</h1>
-<p>Find me in app/views/users/users/show.html.erb</p>
+<section class="ftco-section ftco-agent">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="img">
+          <%= attachment_image_tag @user, :img, format: 'png', fallback: "noimage.png", class: "img", size: "400x400" %>
+        </div>
+          <h3><%= @user.nick_name %></h3>
+					<p><%= @user.introduction %></P>
+          <% if @user == current_user %>
+            <%= link_to "編集する", edit_user_path, class: "btn btn-primary" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+

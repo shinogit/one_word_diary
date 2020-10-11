@@ -76,3 +76,6 @@ end
 gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
 gem 'devise'
+
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"

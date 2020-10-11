@@ -1,4 +1,4 @@
-class Admins::WordsController < ApplicationController
+class Admins::WordsController < Admins::Base
   def index
   end
 

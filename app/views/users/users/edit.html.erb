@@ -1,2 +1,49 @@
-<h1>Users::Users#edit</h1>
-<p>Find me in app/views/users/users/edit.html.erb</p>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <%= image_tag "icon_login.svg", id: "icon", alt: "User Icon", size: "30x30" %>
+      <p>プロフィールを編集しよう</p>
+    </div>
+
+    <!-- Login Form -->
+    <%= form_with model: @user, url:user_path(@user), local: true do |f| %>
+
+		<!-- エラーメッセージ表示-->
+	<% if @user.errors.any? %>
+		<div id="error_explanation">
+			<h3><%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:</h3>
+			<ul>
+				<% @user.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<!-- エラーメッセージ表示-->
+
+    <div class="field">
+      <%= f.text_field :name, autocomplete: "name", class: "fadeIn second", placeholder: "名前" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :nick_name, autocomplete: "nick_name", class: "fadeIn second", placeholder: "ニックネーム" %>
+    </div>
+		<div class="field">
+      <%= f.text_field :introduction, autocomplete: "introduction", class: "fadeIn second", placeholder: "ひとこと自己紹介" %>
+    </div>
+
+		<div class="field">
+			<%= attachment_image_tag @user, :img, class: "img-square rounded-circle", format: 'jpg', fallback: "noimage.png", size: "200x200" %>
+			<%= f.attachment_field :img, class: "image-prev" %>
+		</div>
+		
+    <div class="actions">
+      <%= f.submit "編集を確定する", class: "fadeIn fourth" %>
+    </div>
+
+  <% end %>
+
+  </div>
+</div>
