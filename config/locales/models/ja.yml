@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      word: ひとこと
+    attributes:
+      word:
+        title: タイトル
+        body: 本文
