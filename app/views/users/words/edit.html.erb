@@ -1,23 +1,36 @@
-<%= form_with(model: @word, local: true) do |form| %>
+<%= form_with(model: @word, local: true) do |f| %>
+
+<%# ここからエラーメッセージ %>
+  <% if @word.errors.any? %>
+    <div class="error_explanation">
+      <h2><%= pluralize(@word.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+        <% @word.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%# ここまでエラーメッセージ %>
 
   <div class="title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "タイトルを入力してね" %>
   </div>
 
     <div class="time">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
+    <%= f.label :start_time %>
+    <%= f.datetime_select :start_time %>
   </div>
 
   <div class="body">
-    <%= form.label :body %>
-    <%= form.text_field :body %>
+    <%= f.label :body %>
+    <%= f.text_field :body, placeholder: "「ひとこと」を入力してね" %>
   </div>
 
 
   <div class="submit">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 
 <% end %>

@@ -48,7 +48,7 @@
                   </li>
                   <li class='nav-item'>
                     <%= link_to words_path, class: 'nav-link' do %>
-                      ひとこと一覧
+                      ひとこと日記帳
                     <% end %>
                   </li>
                   <li class='nav-item'>
@@ -68,9 +68,9 @@
                 <% end %>
               </ul>
               <!---------------------- adminログイン ---------------------->
-             
+
                 <% if admin_signed_in? %>
-                 <ul class='navbar-nav mr-auto'>
+                <ul class='navbar-nav mr-auto'>
                 <li class='nav-item'>
                   <%= link_to homes_about_path, class: 'nav-link' do %>
                     One Word Diaryとは？

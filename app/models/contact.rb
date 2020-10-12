@@ -1,5 +1,7 @@
-class Word < ApplicationRecord
+class Contact < ApplicationRecord
+
   belongs_to :user
 
   validates :title, :body, presence: true
+  
 end

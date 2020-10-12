@@ -9,5 +9,8 @@ class User < ApplicationRecord
   has_many :words
   has_many :comments
   has_many :likes
+  has_many :contacts
+
+  validates :name, :nick_name, presence: true
 
 end
