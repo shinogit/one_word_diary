@@ -1,0 +1,37 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー # view側： User.model_name.human => "ユーザ" / t("activerecord.models.user")と同じ
+      word: ひとこと 
+    attributes:
+      user:
+        id: ID
+        name: 名前 # view側： User.human_attribute_name :name => "名前" /　t("activerecord.attributes.user.name")と同じ
+        nick_name: ニックネーム
+        email: メールアドレス
+        file: プロフィール画像
+        crypted_password: パスワード
+        created_at: 作成日
+        updated_at: 更新日
+        # word
+      word:
+        id: ID
+        title: タイトル
+        body: ひとこと
+        created_at: 作成日
+        updated_at: 更新日
+        # contact
+      contact:
+        id: ID
+        title: タイトル
+        body: お問合せ内容
+        created_at: 作成日
+        updated_at: 更新日
+        # comment
+      comment:
+        id: ID
+        title: タイトル
+        body: コメント
+        created_at: 作成日
+        updated_at: 更新日
+  

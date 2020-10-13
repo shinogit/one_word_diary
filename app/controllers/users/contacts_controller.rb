@@ -15,7 +15,7 @@ class Users::ContactsController < Users::Base
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
     if @contact.save
-      redirect_to contact_path(@contact.id),notice: "お問い合わせを登録しました"
+      redirect_back(fallback_location: root_path)
     else
       @contacts = Contact.all
       @user = current_user
@@ -43,10 +43,11 @@ class Users::ContactsController < Users::Base
   end
 
   def ensure_correct_user
-    @user = User.find(params[:id])
-    if @user != current_user
-      flash[:notice] = "他人のプロフィールの編集はできません！"
-      redirect_to user_path(current_user)
+    @contact = Contact.find(params[:id])
+    if @contact.user_id != current_user.id
+
+      flash[:notice] = "他人のお問い合わせは編集できません"
+      redirect_to contacts_path
     end
   end
   

@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :contacts
 
-  validates :name, presence: true #, length: { maximum: 20 }
-  validates :nick_name, presence: true #, length: { maximum: 20 }
+  validates :name, presence: true , length: { maximum: 20 }
+  validates :nick_name, presence: true , length: { maximum: 20 }
 
 end

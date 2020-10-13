@@ -23,7 +23,7 @@
   </div>
 
   <div class="body">
-    <%= f.text_field :body, placeholder: "問合せ内容" %>
+    <%= f.text_field :body, placeholder: "お問合せ内容" %>
   </div>
 
   <div class="submit">
@@ -42,14 +42,14 @@
     </thead>
     <tbody>
       <% @contacts.each do |contact| %>
-      <tr>
       <% if contact.user_id == current_user.id %>
+      <tr>
         <td><%= contact.id %></td>
         <td><%= contact.title %></td>
         <td><%= link_to "詳細", contact_path(contact.id) %></td>
         <td><%= link_to "削除",contact_path(contact.id), method: :delete, data: { confirm: "お問い合わせを削除しますか？" } %></td>
-        <% end %>
       </tr>
+      <% end %>
       <% end %>
     </tbody>
   </table>
