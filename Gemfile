@@ -72,6 +72,8 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+gem 'dotenv-rails'
+
 gem 'pry-byebug'
 
 gem 'bootstrap', '~> 4.5.0'

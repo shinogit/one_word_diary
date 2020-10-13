@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   get 'homes/about'
 
   # ------------------------ユーザ側------------------------
-  devise_for :users
+
   scope module: :users do
+    devise_for :users
     resources :users
     resources :words
-    get 'words/calender'
     resources :comments
     resources :likes, only: [:create, :destroy]
     resources :contacts
+    
   end
   
 
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
     resources :contacts
   end
 
-  scope module: :users do
+  scope module: :admins do
     devise_for :admins
   end
 
