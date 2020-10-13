@@ -1,5 +1,6 @@
 <section class="ftco-section ftco-agent">
   <div class="container">
+  <p id="notice"><%= notice %></p>
     <div class="row">
       <div class="col-md-6 mx-auto">
         <div class="img">
@@ -10,6 +11,12 @@
           <% if @user == current_user %>
             <%= link_to "編集する", edit_user_path, class: "btn btn-primary" %>
           <% end %>
+          <% if @user == current_user %>
+            <%= link_to "自分の日記帳を見る", words_path(current_user), class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "日記帳を見る", words_path(@user), class: "btn btn-primary" %>
+          <% end %>
+          <%= link_to "一覧に戻る", users_path, class: "btn btn-secondary" %>
       </div>
     </div>
   </div>

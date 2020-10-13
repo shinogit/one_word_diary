@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   scope module: :users do
     resources :users
     resources :words
+    get 'words/calender'
     resources :comments
     resources :likes, only: [:create, :destroy]
     resources :contacts

@@ -1,2 +1,40 @@
-<h1>Admins::Users#show</h1>
-<p>Find me in app/views/admins/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+      <h3 class="heading"><%= "#{@user.name}さんの会員詳細" %></h3>
+      <table class="table table-bordered">
+        <tr>
+          <td><%= "顧客ID" %></td>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <td><%= "名前" %></td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td><%= "ニックネーム" %></td>
+          <td><%= @user.nick_name %></td>
+        </tr>
+        <tr>
+          <td><%= "メールアドレス" %></td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td><%= "自己紹介" %></td>
+          <td><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <td><%= "ステータス" %></td>
+          <% if @user.is_deleted == false %>
+          <td>有効会員</td>
+          <% else %>
+          <td>無効会員</td>
+          <% end %>
+        </tr>
+      </table>
+      <%= link_to "編集", edit_admins_user_path(@user), class: "btn btn-primary link_to_btn" %>
+    </div>
+    <div class="col-xs-1"></div>
+  </div>
+</div>

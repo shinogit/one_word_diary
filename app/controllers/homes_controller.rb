@@ -1,9 +1,12 @@
 class HomesController < ApplicationController
-  skip_before_action :authenticate_user!
-  #skip_before_action :authenticate_admin!
+  
+  # skip_before_action :authenticate_user!
+  # skip_before_action :authenticate_admin!
+
   def top
   end
 
   def about
   end
+
 end
