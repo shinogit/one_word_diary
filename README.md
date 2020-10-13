@@ -4,7 +4,6 @@
 
 今日あった出来事を「ひとこと」で書き込む日記帳。
 誰でも「ひとこと」に対して'いいね'や'コメント'で反応することができます。
-見せたくない日記は非公開にすることもできます。
 
 ### サイトテーマ
 
@@ -36,7 +35,8 @@
 ## 開発環境
 
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails 5.2.4.3
+- 言語：HTML5,CSS3,JavaScript,Ruby2.5.7,SQL
+- フレームワーク：Ruby on Rails 5.2.4.4
 - JS ライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
+- AWS：VPC,EC2,RDS,Route 53,Certificate Mnager

@@ -1,2 +1,31 @@
-<h1>Users::Contacts#show</h1>
-<p>Find me in app/views/users/contacts/show.html.erb</p>
+<div class="container">
+<p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="heading">お問い合わせ詳細</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>お問い合わせ内容</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          
+            <td><%= @contact.id %></td>
+            <td><%= @contact.title %></td>
+            <td><%= @contact.body %></td>
+            <th><%= link_to "編集", edit_contact_path(@contact.id) %></th>
+            <th><%= link_to "削除",contact_path(@contact.id), method: :delete, data: { confirm: "お問い合わせを削除しますか？" } %></th>
+
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "戻る", contacts_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

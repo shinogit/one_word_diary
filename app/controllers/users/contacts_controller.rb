@@ -1,5 +1,7 @@
 class Users::ContactsController < Users::Base
 
+  before_action :ensure_correct_user,{only: [:edit,:update,:destroy]}
+
   def index
     @contacts = Contact.all
     @contact = Contact.new
@@ -23,11 +25,6 @@ class Users::ContactsController < Users::Base
 
   def edit
     @contact = Contact.find(params[:id])
-    if @contact.user == current_user
-      render :edit
-    else
-      redirect_to contacts_path
-    end
   end
 
   def update
@@ -45,6 +42,14 @@ class Users::ContactsController < Users::Base
     redirect_to contacts_path, notice:"お問い合わせを削除しました"
   end
 
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    if @user != current_user
+      flash[:notice] = "他人のプロフィールの編集はできません！"
+      redirect_to user_path(current_user)
+    end
+  end
+  
   private
 
   def contact_params

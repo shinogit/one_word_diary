@@ -1,19 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>タイトル</strong>
-  <%= @word.title %>
-</p>
-
-<p>
-  <strong>時間</strong>
-  <%= @word.start_time.strftime("%Y-%m-%d %H:%M") %>
-</p>
-
-<p>
-  <strong>内容</strong>
-  <%= @word.body %>
-</p>
-
-<%= link_to "Edit", edit_word_path(@word) %> |
-<%= link_to "Back", words_path %>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="heading">「ひとこと」の詳細</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>ひとこと</th>
+            <th>時間</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @word.id %></td>
+            <td><%= @word.title %></td>
+            <td><%= @word.body %></td>
+            <td><%= @word.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+            <th><%= link_to "編集", edit_word_path(@word) %></th>
+            <th><%= link_to "削除",word_path(@word.id), method: :delete, data: { confirm: "「ひとこと」を削除しますか？" } %></th>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "戻る", words_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
