@@ -49,14 +49,17 @@ hr{
 	height: 2px;
 	background-color: #2196F3;
 	border: 0;
-	margin-bottom: 80px;
+	margin: 0 auto;
 }
 
-section{
+ul {
+  list-style: none;
+}
+
+.homes{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 	padding: 125px 100px;
 }
 
@@ -179,7 +182,7 @@ header nav li:last-child{
 	background-size: cover;
 	background-color: #2196F3;
 	z-index: -1;
-	background-image: image-url("island.jpg");
+	background-image: image-url("top-book.jpg");
   background-size:cover;
 }
 
@@ -192,7 +195,7 @@ header nav li:last-child{
 	height: 100%;
 	background-color: #414a4f;
 	opacity: 0.75;
-	background-image: image-url("island.jpg");
+	background-image: image-url("top-book.jpg");
   background-size:cover;
 }
 

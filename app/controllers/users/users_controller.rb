@@ -26,18 +26,18 @@ class Users::UsersController < Users::Base
   def destroy
   end
 
-  private
-  
-  def user_params
-    params.require(:user).permit(:name, :nick_name, :introduction, :img)
-  end
-
   def ensure_correct_user
     @user = User.find(params[:id])
     if @user != current_user
       flash[:notice] = "他人のプロフィールの編集はできません！"
       redirect_to user_path(current_user)
     end
+  end
+
+  private
+  
+  def user_params
+    params.require(:user).permit(:name, :nick_name, :introduction, :img)
   end
 
 end

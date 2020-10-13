@@ -1,32 +1,38 @@
-<p id="notice"><%= notice %></p>
-<%= form_with(model: @contact, local: true) do |f| %>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<%# ここからエラーメッセージ %>
-  <% if @contact.errors.any? %>
-    <div class="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this product from being saved:</h2>
-      <ul>
-        <% @contact.errors.full_messages.each do |message| %>
+
+      <%= form_with(model: @contact, local: true) do |f| %>
+
+      <%# ここからエラーメッセージ %>
+      <% if @contact.errors.any? %>
+      <div class="error_explanation">
+        <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this product from being saved:</h2>
+        <ul>
+          <% @contact.errors.full_messages.each do |message| %>
           <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%# ここまでエラーメッセージ %>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <%# ここまでエラーメッセージ %>
 
-  <div class="title">
-    <%= f.label :title %>
-    <%= f.text_field :title, placeholder: "タイトルを入力" %>
+      <div class="title">
+        <%= f.label :タイトル %><br>
+        <%= f.text_field :title, placeholder: "タイトルを入力" %>
+      </div>
+
+      <div class="body">
+        <%= f.label :お問い合わせ内容 %><br>
+        <%= f.text_field :body, placeholder: "お問い合わせ内容を入力" %>
+      </div>
+
+
+      <div class="submit">
+        <%= f.submit %>
+      </div>
+
+      <% end %>
+
   </div>
 
-  <div class="body">
-    <%= f.label :body %>
-    <%= f.text_field :body, placeholder: "本文を入力" %>
-  </div>
-
-
-  <div class="submit">
-    <%= f.submit %>
-  </div>
-
-<% end %>

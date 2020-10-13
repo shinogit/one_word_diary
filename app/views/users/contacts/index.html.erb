@@ -1,65 +1,56 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
   <div class="row">
     <h1>お問い合わせはこちらから</h1>
   </div>
-  <div class="row">
+  <%= form_with(model: @contact, local: true) do |f| %>
 
-    <div class="col-xs-4">
-      <%= form_with(model: @contact, local: true) do |f| %>
-
-      <%# ここからエラーメッセージ %>
-        <% if @contact.errors.any? %>
-          <div class="error_explanation">
-            <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this product from being saved:</h2>
-            <ul>
-              <% @contact.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-      <%# ここまでエラーメッセージ %>
-
-        <div class="title">
-          <%= f.text_field :title %>
-        </div>
-
-        <div class="body">
-          <%= f.text_field :body %>
-        </div>
-
-        <div class="submit">
-          <%= f.submit %>
-        </div>
-
+  <%# ここからエラーメッセージ %>
+  <% if @contact.errors.any? %>
+  <div class="error_explanation">
+    <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
       <% end %>
-    </div>
-    <div class="col-xs-4">
-      <%=  %>
-    </div>
-
-    <div class="col-xs-4">
-      <table class="contacts_list">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>お問合せタイトル</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @contacts.each do |contact| %>
-            <tr>
-              <td><%= contact.id %></td>
-
-              <td><%= contact.title %></td>
-              <td><%= link_to "編集", edit_contact_path(contact.id) %></td>
-              <td><%= link_to "削除",contact_path(contact.id), method: :delete, data: { confirm: "お問い合わせを削除しますか？" } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
+    </ul>
   </div>
+  <% end %>
+  <%# ここまでエラーメッセージ %>
+
+  <div class="title">
+    <%= f.text_field :title, placeholder: "タイトル" %>
+  </div>
+
+  <div class="body">
+    <%= f.text_field :body, placeholder: "問合せ内容" %>
+  </div>
+
+  <div class="submit">
+    <%= f.submit %>
+  </div>
+  <% end %>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>お問合せタイトル</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @contacts.each do |contact| %>
+      <tr>
+      <% if contact.user_id == current_user.id %>
+        <td><%= contact.id %></td>
+        <td><%= contact.title %></td>
+        <td><%= link_to "詳細", contact_path(contact.id) %></td>
+        <td><%= link_to "削除",contact_path(contact.id), method: :delete, data: { confirm: "お問い合わせを削除しますか？" } %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
