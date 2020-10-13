@@ -1,5 +1,7 @@
 class Users::WordsController < Users::Base
 
+  before_action :ensure_correct_user,{only: [:edit,:update,:destroy]}
+
   def index
     @words = Word.all
     @month_words = Word.where(updated_at: Date.today.all_month)
@@ -21,19 +23,12 @@ class Users::WordsController < Users::Base
     if @word.save
       redirect_to word_path(@word.id),notice: "「ひとこと」を記録できました！　あしたも「ひとこと」を記録しよう！"
     else
-      @words = Word.all
-      @user = current_user
       render :new
     end
   end
 
   def edit
     @word = Word.find(params[:id])
-    if @word.user == current_user
-      render :edit
-    else
-      redirect_to words_path
-    end
   end
 
   def update
@@ -49,6 +44,14 @@ class Users::WordsController < Users::Base
     word = Word.find(params[:id])
     word.destroy
     redirect_to words_path, notice:"「ひとこと」を削除しました"
+  end
+
+  def ensure_correct_user
+    @word = User.find(params[:id])
+    if @word != current_user
+      flash[:notice] = "他人の「ひとこと」の編集はできません！"
+      redirect_to word_path(@word)
+    end
   end
 
   private

@@ -13,7 +13,6 @@ class Users::Base < ApplicationController
     new_user_session_path
   end
 
-  
   # 新規登録時(sign_up時)にDBに変更を許可するパラメータ
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :encrypted_password, :name, :nick_name])

@@ -1,2 +1,55 @@
-<h1>Admins::Users#edit</h1>
-<p>Find me in app/views/admins/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10 admins_user_edit fadeIn">
+      <h3 class="heading"><%= "#{@user.name}さんの情報編集" %></h3>
+      <%= form_with model: @user, url: admins_user_path, local: true do |f| %>
+
+      <%# ここからエラーメッセージ %>
+      <% if @user.errors.any? %>
+      <div class="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this product from being saved:</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <%# ここまでエラーメッセージ %>
+
+      <table class="table table-bordered">
+        <tr>
+          <th><%= "ユーザID" %></th>
+          <td class="text-center"><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th><%= "名前" %></th>
+          <td class="text-center"><%= f.text_field :name, class:"form-control", placeholder: "名前" %></td>
+        </tr>
+        <tr>
+          <th><%= "ニックネーム" %></th>
+          <td class="text-center"><%= f.text_field :nick_name, class:"form-control", placeholder: "ニックネーム" %></td>
+        </tr>
+        <tr>
+          <th><%= "メールアドレス" %></th>
+          <td class="text-center"><%= f.text_field :email, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= "自己紹介" %></th>
+          <td class="text-center"><%= f.text_area :introduction, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= "ユーザステータス" %></th>
+          <td class="text-center">
+            <%= f.radio_button :is_deleted, :false %><%= f.label :is_deleted_false, "有効" %><%= f.radio_button :is_deleted, :true %><%= f.label :is_deleted_true, "無効" %>
+          </td>
+        </tr>
+      </table>
+      <%= f.submit "変更を保存する", class: "btn btn-primary" %>
+      <%= link_to "キャンセル", admins_user_path(@user.id), class: "btn btn-primary link_to_btn" %>
+      <% end %>
+    </div>
+    <div class="col-xs-1"></div>
+  </div>
+</div>

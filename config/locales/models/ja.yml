@@ -1,8 +1,9 @@
 ja:
   activerecord:
     models:
-      word: ひとこと
+      user: ユーザ
     attributes:
-      word:
-        title: タイトル
-        body: 本文
+      user:
+        name: 名前
+        nick_name: ニックネーム
+        

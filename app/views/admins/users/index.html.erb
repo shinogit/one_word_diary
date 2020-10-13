@@ -1,93 +1,42 @@
-<!-- Tables
-  ================================================== -->
-  <section class="bs-docs-section">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-header">
+        <h1 id="tables">ユーザー一覧</h1>
+      </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="page-header">
-          <h1 id="tables">ユーザー一覧</h1>
-        </div>
+      <div class="bs-component">
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ユーザーID</th>
+              <th scope="col">名前</th>
+              <th scope="col">ニックネーム</th>
+              <th scope="col">メールアドレス</th>
+              <th scope="col">ステータス</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
 
-        <div class="bs-component">
-          <table class="table table-hover table-striped">
-            <thead>
-              <tr>
-                <th scope="col">ユーザーID</th>
-                <th scope="col">名前</th>
-                <th scope="col">ニックネーム</th>
-                <th scope="col">ステータス</th>
-              </tr>
-            </thead>
-            <tbody>
+          <tbody>
             <% @users.each do |user| %>
-              <tr class="table-active">
-                <td scope="row"><%= user.id %></td>
-                <td><%= user.name %></td>
-                <td><%= user.nick_name %></td>
-                <% if user.is_deleted == true %>
-                <td>無効</td>
-                <% else %>
-                <td>有効</td>
-                <% end %>
-              </tr>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.name %></td>
+              <td><%= user.nick_name %></td>
+              <td><%= user.email %></td>
+              <% if user.is_deleted == true %>
+              <td>無効</td>
+              <% else %>
+              <td>有効</td>
               <% end %>
-              <tr>
-                <th scope="row">Default</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="table-primary">
-                <th scope="row">Primary</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="table-secondary">
-                <th scope="row">Secondary</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="table-success">
-                <th scope="row">Success</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="table-danger">
-                <th scope="row">Danger</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="table-warning">
-                <th scope="row">Warning</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="table-info">
-                <th scope="row">Info</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="table-light">
-                <th scope="row">Light</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-              <tr class="table-dark">
-                <th scope="row">Dark</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
-            </tbody>
-          </table>
-        </div><!-- /example -->
+              <td><%= link_to "編集", admins_user_path(user) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
       </div>
     </div>
-  </section>
+  </div>
+</div>

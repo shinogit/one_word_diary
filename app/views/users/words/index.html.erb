@@ -5,13 +5,13 @@
 <%= link_to "日記をかく", new_word_path, class: "btn btn-primary" %>
 
 <%= month_calendar events: @words do |date, words| %>
-  <%= date.day %>
+<%= date.day %>
 
-  <% words.each do |word| %>
-    <div>
-      <%= link_to word.title, word %>
-    </div>
-  <% end %>
+<% words.each do |word| %>
+<div>
+  <%= link_to word.title, word %>
+</div>
+<% end %>
 <% end %>
 
 <div class="container">
@@ -29,13 +29,13 @@
       </thead>
       <tbody>
         <% @month_words.each do |word| %>
-          <tr>
-            <td><%= word.title %></td>
-            <td><%= word.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-            <td><%= link_to "Show", word %></td>
-            <td><%= link_to "Edit", edit_word_path(word.id) %></td>
-            <td><%= link_to "Destroy",word_path(word.id), method: :delete, data: { confirm: "「ひとこと」削除しますか？" } %></td>
-          </tr>
+        <tr>
+          <td><%= word.title %></td>
+          <td><%= word.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= link_to "Show", word %></td>
+          <td><%= link_to "Edit", edit_word_path(word.id) %></td>
+          <td><%= link_to "Destroy",word_path(word.id), method: :delete, data: { confirm: "「ひとこと」削除しますか？" } %></td>
+        </tr>
         <% end %>
       </tbody>
     </table>

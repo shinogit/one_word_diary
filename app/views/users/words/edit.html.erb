@@ -18,16 +18,15 @@
     <%= f.text_field :title, placeholder: "タイトルを入力してね" %>
   </div>
 
-    <div class="time">
-    <%= f.label :start_time %>
-    <%= f.datetime_select :start_time %>
-  </div>
-
   <div class="body">
     <%= f.label :body %>
     <%= f.text_field :body, placeholder: "「ひとこと」を入力してね" %>
   </div>
 
+  <div class="time">
+    <%= f.label :start_time %>
+    <%= f.datetime_select :start_time %>
+  </div>
 
   <div class="submit">
     <%= f.submit %>
