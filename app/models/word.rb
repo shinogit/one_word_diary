@@ -1,7 +1,7 @@
 class Word < ApplicationRecord
   belongs_to :user
 
-  validates :title, presence: true, length: { in: 1..10 }
-  validates :body, presence: true, length: { in: 1..30 }
+  validates :title, presence: true, length: { maximum: 30 }
+  validates :body, presence: true, length: { maximum: 30 }
   
 end
