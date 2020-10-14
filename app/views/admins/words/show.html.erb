@@ -1,2 +1,32 @@
-<h1>Admins::Words#show</h1>
-<p>Find me in app/views/admins/words/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1><%= "#{@word.title} 詳細" %></h1>
+      <table class="table table-bordered">
+        <tr>
+          <td><%= "ひとことID" %></td>
+          <td><%= @word.id %></td>
+        </tr>
+        <tr>
+          <td><%= "タイトル" %></td>
+          <td><%= @word.title %></td>
+        </tr>
+        <tr>
+          <td><%= "ひとこと本文" %></td>
+          <td><%= @word.body %></td>
+        </tr>
+        <tr>
+          <td><%= "投稿時刻" %></td>
+          <td><%= @word.start_time.strftime("%m月%d日 %H:%M") %></td>
+        </tr>
+        <tr>
+          <td><%= "投稿者" %></td>
+          <td><%= attachment_image_tag(@word.user, :img, :fill, 50, 50, fallback: "noimage.png", size: "50x50", alt:"user_picture" ) %><%= link_to "#{@word.user.name}", admins_user_path(@word.user.id) %></td>
+        </tr>
+      </table>
+      <%= link_to "編集", edit_admins_word_path(@word), class: "btn btn-primary link_to_btn" %>
+      <%= link_to "ひとこと一覧に戻る", admins_words_path, class: "btn btn-primary link_to_btn" %>
+    </div>
+  </div>
+</div>

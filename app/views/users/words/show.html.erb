@@ -2,10 +2,11 @@
   <p id="notice"><%= notice %></p>
   <div class="row">
     <div class="col-xs-12">
-      <h3 class="heading">「ひとこと」の詳細</h3>
+      <h3 class="heading">「ひとこと」詳細</h3>
       <table class="table table-bordered">
         <thead>
           <tr>
+            <th>書いた人</th>
             <th>日付時刻</th>
             <th>タイトル</th>
             <th>ひとこと</th>
@@ -15,6 +16,7 @@
         </thead>
         <tbody>
           <tr>
+            <td><%= link_to "#{@word.user.name}", user_path(@word.user.id) %></td>
             <td><%= @word.start_time.strftime("%m月%d日 %H:%M") %></td>
             <td><%= @word.title %></td>
             <td><%= @word.body %></td>
@@ -22,10 +24,59 @@
             <td>
               <%= link_to "削除",word_path(@word.id), method: :delete, data: { confirm: "「ひとこと」を削除しますか？" }, class: "btn", id: "btn-delete" %>
             </td>
+            
           </tr>
         </tbody>
       </table>
-      <%= link_to "「ひとこと」一覧に戻る", words_path, class: "btn btn-primary return" %>
+
+      <%# ここからコメント機能 %>
+      <table class="table">
+        <% @word.comments.each do |comment| %>
+        <tr>
+          <td>
+            <%= link_to user_path(comment.user.id) do %>
+            <%= attachment_image_tag comment.user, :img, :fill, 60, 60, fallback: "noimage.png", size: "60x60" %><br>
+            <%= comment.user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= comment.body %>
+            <% if comment.user == current_user %>
+            <%= link_to "Destroy", word_comment_path(comment.word, comment), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_word_#{@word.id}" %>
+          </td>
+          <% end %>
+          </td>
+        </tr>
+        <% end %>
+        <%# ここからコメント投稿フォーム %>
+        <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
+          <h3 class="section-title left">
+            <span>コメント</span>
+          </h3>
+        </div>
+        <%= form_for [@word, @comment] do |f| %>
+        <%# ここからエラーメッセージ %>
+        <% if @comment.errors.any? %>
+        <div class="error_explanation">
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this product from being saved:</h2>
+          <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+        <%# ここまでエラーメッセージ %>
+        <div class="row">
+          <div class="col-sm-12">
+            <%= f.text_field :body, class: "form-control", placeholder: "コメントを書いてみよう" %>
+          </div>
+        </div>
+        <%= f.submit class: "btn btn-primary" %>
+        <% end %>
+        <%# コメント機能ここまで %>
+
+        <%= link_to "「ひとこと」一覧に戻る", words_path, class: "btn btn-primary return" %>
     </div>
   </div>
 </div>

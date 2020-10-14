@@ -1,7 +1,8 @@
 class Admins::UsersController < Admins::Base
   
   def index
-    @users = User.all  
+    @users = User.all.page(params[:page]).per(5)
+    @users = @users.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def show

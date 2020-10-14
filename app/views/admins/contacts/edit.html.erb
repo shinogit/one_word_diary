@@ -1,2 +1,44 @@
-<h1>Admins::Contacts#edit</h1>
-<p>Find me in app/views/admins/contacts/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 admins_contact_edit">
+      <h1><%= "「#{@contact.title}」のへ回答" %></h1>
+      <%= form_with model: @contact, url: admins_contact_path, local: true do |f| %>
+
+      <%# ここからエラーメッセージ %>
+      <% if @contact.errors.any? %>
+      <div class="error_explanation">
+        <% pluralize(@contact.errors.count, "error") %>
+        <p><%= "#{@contact.errors.count}件エラーがあります"%></p>
+        <ul>
+          <% @contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <%# ここまでエラーメッセージ %>
+
+      <table class="table table-bordered">
+        <tr>
+          <th><%= "お問い合わせID" %></th>
+          <td class="text-center"><%= @contact.id %></td>
+        </tr>
+        <tr>
+          <th><%= "お問い合わせタイトル" %></th>
+          <td class="text-center"><%= @contact.title %></td>
+        </tr>
+        <tr>
+          <th><%= "お問い合わせ内容" %></th>
+          <td class="text-center"><%= @contact.body %></td>
+        </tr>
+        <tr>
+          <th><%= "回答" %></th>
+          <td class="text-center"><%= f.text_field :body, class:"form-control" %></td>
+        </tr>
+      </table>
+      <%= f.submit "回答する", class: "btn btn-primary" %>
+      <%= link_to "キャンセル", admins_contact_path(@contact.id), class: "btn btn-primary link_to_btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>

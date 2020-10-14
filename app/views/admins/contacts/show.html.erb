@@ -1,2 +1,36 @@
-<h1>Admins::Contacts#show</h1>
-<p>Find me in app/views/admins/contacts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1><%= "お問い合わせ 詳細" %></h1>
+      <table class="table table-bordered">
+        <tr>
+          <td><%= "お問い合わせID" %></td>
+          <td><%= @contact.id %></td>
+        </tr>
+        <tr>
+          <td><%= "お問い合わせタイトル" %></td>
+          <td><%= @contact.title %></td>
+        </tr>
+        <tr>
+          <td><%= "お問い合わせ内容" %></td>
+          <td><%= @contact.body %></td>
+        </tr>
+        <tr>
+          <td><%= "投稿時刻" %></td>
+          <td><%= @contact.created_at.strftime("%m月%d日 %H:%M") %></td>
+        </tr>
+        <tr>
+          <td><%= "投稿者" %></td>
+          <td><%= attachment_image_tag(@contact.user, :img, :fill, 50, 50, fallback: "noimage.png", size: "50x50", alt:"user_picture" ) %><%= link_to "#{@contact.user.name}", admins_user_path(@contact.user.id) %></td>
+        </tr>
+        <tr>
+          <td><%= "回答ステータス" %></td>
+          <td><%= @contact.anser_status %></td>
+        </tr>
+      </table>
+      <%= link_to "回答する", edit_admins_contact_path(@contact), class: "btn btn-primary link_to_btn" %>
+      <%= link_to "お問い合わせ一覧に戻る", admins_contacts_path, class: "btn btn-primary link_to_btn" %>
+    </div>
+  </div>
+</div>
