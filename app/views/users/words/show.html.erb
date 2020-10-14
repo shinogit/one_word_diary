@@ -6,26 +6,26 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>日付時刻</th>
             <th>タイトル</th>
             <th>ひとこと</th>
-            <th>時間</th>
             <th></th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><%= @word.id %></td>
+            <td><%= @word.start_time.strftime("%m月%d日 %H:%M") %></td>
             <td><%= @word.title %></td>
             <td><%= @word.body %></td>
-            <td><%= @word.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-            <th><%= link_to "編集", edit_word_path(@word) %></th>
-            <th><%= link_to "削除",word_path(@word.id), method: :delete, data: { confirm: "「ひとこと」を削除しますか？" } %></th>
+            <td><%= link_to "編集", edit_word_path(@word.id), class: "btn btn-primary" %></td>
+            <td>
+              <%= link_to "削除",word_path(@word.id), method: :delete, data: { confirm: "「ひとこと」を削除しますか？" }, class: "btn", id: "btn-delete" %>
+            </td>
           </tr>
         </tbody>
       </table>
-      <%= link_to "戻る", words_path, class: "btn btn-primary" %>
+      <%= link_to "「ひとこと」一覧に戻る", words_path, class: "btn btn-primary return" %>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container">
   <section class="ftco-section mx-auto">
     <div class="user_index">
-      <h1>メンバー</h1>
+      <h1>ユーザー</h1>
       <%=  %>
     </div>
   </section>
@@ -10,14 +10,12 @@
     <div class="row">
       <% @users.each do |user| %>   
         <div class="col-md-3">
-          <div class="agent">
-            <div class="img">
-              <%= attachment_image_tag user, :img, format: 'jpg', fallback: "noimage.png", class: "img-fluid img-thumbnail index-img", alt:"user_picture" %>
+            <div class="img"> 
+              <%= attachment_image_tag(user, :img, :fill, 210, 210, fallback: "noimage.png",size: "210x210", class: "img-fluid index-img", alt:"user_picture") %>
             </div>
             <div>
-              <h3><%= link_to user.nick_name, user_path(user) %></h3>
+              <h3 class="text-center"><%= link_to user.nick_name, user_path(user) %></h3>
               <p><%=user.introduction %></P>
-            </div>
           </div>
         </div>
       <% end %>

@@ -1,36 +1,7 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
-  <div class="row">
-    <h1>お問い合わせはこちらから</h1>
-  </div>
-  <%= form_with(model: @contact, local: true) do |f| %>
-
-  <%# ここからエラーメッセージ %>
-  <% if @contact.errors.any? %>
-  <div class="error_explanation">
-    <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this product from being saved:</h2>
-    <ul>
-      <% @contact.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <%# ここまでエラーメッセージ %>
-
-  <div class="title">
-    <%= f.text_field :title, placeholder: "タイトル" %>
-  </div>
-
-  <div class="body">
-    <%= f.text_field :body, placeholder: "お問合せ内容" %>
-  </div>
-
-  <div class="submit">
-    <%= f.submit %>
-  </div>
-  <% end %>
-
+  <h1>お問い合わせ一覧</h1>
+  <%= link_to "お問い合わせの投稿はこちら", new_contact_path, class: "btn btn-primary" %><br>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -40,17 +11,18 @@
         <th></th>
       </tr>
     </thead>
-    <tbody>
-      <% @contacts.each do |contact| %>
+    <tbody> 
+    <% @contacts.each do |contact| %>
       <% if contact.user_id == current_user.id %>
-      <tr>
-        <td><%= contact.id %></td>
-        <td><%= contact.title %></td>
-        <td><%= link_to "詳細", contact_path(contact.id) %></td>
-        <td><%= link_to "削除",contact_path(contact.id), method: :delete, data: { confirm: "お問い合わせを削除しますか？" } %></td>
-      </tr>
+        <tr>
+          <td><%= contact.id %></td>
+          <td><%= contact.title %></td>
+          <td><%= link_to "詳細", contact_path(contact.id), class: "btn btn-primary" %></td>
+          <td><%= link_to "削除",contact_path(contact.id), method: :delete, data: { confirm: "お問い合わせを削除しますか？" }, class: "btn", id: "btn-delete" %></td>
+        </tr>
       <% end %>
-      <% end %>
+    <% end %>
     </tbody>
   </table>
+  <%= paginate @contacts %>
 </div>

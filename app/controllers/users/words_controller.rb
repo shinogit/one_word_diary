@@ -3,7 +3,7 @@ class Users::WordsController < Users::Base
   before_action :ensure_correct_user,{only: [:edit,:update,:destroy]}
 
   def index
-    @words = Word.all
+    @words = Word.all.page(params[:page]).per(10)
     @month_words = Word.where(updated_at: Date.today.all_month)
     @user = current_user
     @users = User.all
@@ -15,6 +15,13 @@ class Users::WordsController < Users::Base
 
   def show
     @word = Word.find(params[:id])
+  end
+
+  def calender
+    @words = Word.where(user_session)
+    @month_words = Word.where(updated_at: Date.today.all_month)
+    @user = current_user
+    @users = User.all
   end
 
   def create
@@ -47,8 +54,8 @@ class Users::WordsController < Users::Base
   end
 
   def ensure_correct_user
-    @word = User.find(params[:id])
-    if @word != current_user
+    @word = Word.find(params[:id])
+    if @word.user_id != current_user.id
       flash[:notice] = "他人の「ひとこと」の編集はできません！"
       redirect_to word_path(@word)
     end

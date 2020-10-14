@@ -37,6 +37,10 @@ a {
   font-weight: 400;
 }
 
+.user_index > h1{
+  margin-top: 20px;
+}
+
 h2 {
   text-align: center;
   font-size: 16px;
@@ -49,6 +53,15 @@ h2 {
 
 #title_logo {
   font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+#btn-delete {
+  color: #fff;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background-color: #e92f22;
+  font-weight: 800;
+  text-align: center;
 }
 
 
@@ -104,7 +117,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset]  {
+input[type=button], input[type=submit], input[type=reset], .return {
   background-color: #56baed;
   border: none;
   color: white;
@@ -126,11 +139,11 @@ input[type=button], input[type=submit], input[type=reset]  {
   transition: all 0.3s ease-in-out;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+input[type=button]:hover, input[type=submit]:hover, input[type=reset], .return:hover {
   background-color: #39ace7;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+input[type=button]:active, input[type=submit]:active, input[type=reset], .return:active {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -195,7 +208,9 @@ input[type=text], input[type=email], input[type=password] {
   transform: scale(0.95);
 }
 
-
+.return:hover {
+  text-decoration: none;
+}
 
 
 #user_introduction {
@@ -372,3 +387,4 @@ input[type=password]:focus {
       transform: rotate(360deg);
   }
 }
+
