@@ -1,8 +1,9 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
-<h1>ひとこと日記帳</h1>
-<br>
-<%= link_to "日記をかく", new_word_path, class: "btn btn-primary" %>
-
+<h1><%= "#{@user.nick_name}さんの日記帳" %></h1>
+<%= link_to "「ひとこと」書く", new_word_path, class: "btn btn-primary return" %>
+<%= link_to "「ひとこと」一覧", words_path, class: "btn btn-primary return" %>
+</div>
 <%# ------カレンダーここから------ %>
 <%= month_calendar events: @words do |date, words| %>
 <%= date.day %>

@@ -3,7 +3,7 @@ class Users::WordsController < Users::Base
   before_action :ensure_correct_user,{only: [:edit,:update,:destroy]}
 
   def index
-    @words = Word.all.page(params[:page]).per(10)
+    @words = Word.all.page(params[:page]).per(100)
     @month_words = Word.where(updated_at: Date.today.all_month)
     @user = current_user
     @users = User.all
@@ -15,6 +15,7 @@ class Users::WordsController < Users::Base
 
   def show
     @word = Word.find(params[:id])
+    @comment = Comment.new
   end
 
   def calender
@@ -28,7 +29,7 @@ class Users::WordsController < Users::Base
     @word = Word.create(word_params)
     @word.user_id = current_user.id
     if @word.save
-      redirect_to word_path(@word.id),notice: "「ひとこと」を記録できました！　あしたも「ひとこと」を記録しよう！"
+      redirect_to word_path(@word.id), notice: "「ひとこと」を記録できました！　あしたも「ひとこと」を記録しよう！"
     else
       render :new
     end

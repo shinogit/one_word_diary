@@ -3,7 +3,7 @@ class Users::ContactsController < Users::Base
   before_action :ensure_correct_user,{only: [:show, :edit, :update, :destroy]}
 
   def index
-    @contacts = Contact.all.page(params[:page]).per(5)
+    @contacts = current_user.contacts.page(params[:page]).per(5)
     @contact = Contact.new
   end
 

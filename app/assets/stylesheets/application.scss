@@ -51,7 +51,11 @@ h2 {
   color: #cccccc;
 }
 
-#title_logo {
+#title_font {
+  font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+#top_font {
   font-family: 'Sawarabi Mincho', sans-serif;
 }
 
@@ -388,3 +392,11 @@ input[type=password]:focus {
   }
 }
 
+#search {
+padding: 5px;
+width: 60%;
+}
+
+#search-btn {
+  padding: 5px 30px;
+  }

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       when Admin
         admins_users_path
       when User
-        words_path
+        calender_word_path(current_user)
     end
   end
 

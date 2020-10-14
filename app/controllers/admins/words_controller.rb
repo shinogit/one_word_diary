@@ -1,9 +1,8 @@
 class Admins::WordsController < Admins::Base
 
   def index
-    @words = Word.all
-    @month_words = Word.where(updated_at: Date.today.all_month)
-    @users = User.all
+    @words = Word.all.page(params[:page]).per(5)
+    @words = @words.where('title LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def show
@@ -27,6 +26,12 @@ class Admins::WordsController < Admins::Base
     word = Word.find(params[:id])
     word.destroy
     redirect_to words_path, notice:"「ひとこと」を削除しました"
+  end
+
+  private
+  
+  def word_params
+    params.require(:word).permit(:title, :body)
   end
 
 end

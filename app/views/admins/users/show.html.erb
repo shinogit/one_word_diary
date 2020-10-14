@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-10">
-      <h3 class="heading"><%= "#{@user.name}さんの会員詳細" %></h3>
+    <div class="col">
+
+      <h1><%= "#{@user.name}さんのプロフィール詳細" %></h1>
+      <%= attachment_image_tag(@user, :img, :fill, 210, 210, fallback: "noimage.png", size: "210x210", alt:"user_picture" ) %>
       <table class="table table-bordered">
         <tr>
-          <td><%= "顧客ID" %></td>
+          <td><%= "ID" %></td>
           <td><%= @user.id %></td>
         </tr>
         <tr>
@@ -34,7 +35,7 @@
         </tr>
       </table>
       <%= link_to "編集", edit_admins_user_path(@user), class: "btn btn-primary link_to_btn" %>
+      <%= link_to "ユーザ一覧に戻る", admins_users_path, class: "btn btn-primary link_to_btn" %>
     </div>
-    <div class="col-xs-1"></div>
   </div>
 </div>

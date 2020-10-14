@@ -7,11 +7,14 @@ Rails.application.routes.draw do
 
   scope module: :users do
     devise_for :users
-    resources :users
-    resources :words do
-    get :calender, on: :member 
+    resources :users do
+      
     end
-    resources :comments
+    resources :words do
+      get :calender, on: :member 
+      resources :comments
+    end
+    
     resources :likes, only: [:create, :destroy]
     resources :contacts 
     
