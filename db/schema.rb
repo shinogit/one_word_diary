@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_10_12_070531) do
   create_table "contacts", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.string "body", default: "", null: false
-    t.string "user_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_10_12_070531) do
     t.string "title", default: "", null: false
     t.string "body", default: "", null: false
     t.string "img_id"
-    t.string "user_id"
+    t.integer "user_id"
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

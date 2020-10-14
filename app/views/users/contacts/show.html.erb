@@ -19,13 +19,13 @@
             <td><%= @contact.id %></td>
             <td><%= @contact.title %></td>
             <td><%= @contact.body %></td>
-            <th><%= link_to "編集", edit_contact_path(@contact.id) %></th>
-            <th><%= link_to "削除",contact_path(@contact.id), method: :delete, data: { confirm: "お問い合わせを削除しますか？" } %></th>
+            <th><%= link_to "編集", edit_contact_path(@contact.id), class: "btn btn-primary" %></th>
+            <th><%= link_to "削除",contact_path(@contact.id), method: :delete, data: { confirm: "お問い合わせを削除しますか？" }, class: "btn", id: "btn-delete" %></th>
 
           </tr>
         </tbody>
       </table>
-      <%= link_to "戻る", contacts_path, class: "btn btn-primary" %>
+      <%= link_to "お問い合わせ一覧に戻る", contacts_path, class: "btn-primary return" %>
     </div>
   </div>
 </div>

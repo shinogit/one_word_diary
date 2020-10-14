@@ -21,7 +21,7 @@
           <tbody>
             <% @users.each do |user| %>
             <tr>
-              <td><%= user.id %></td>
+              <td><%= user.id %><%= attachment_image_tag(user, :img, :fill, 50, 50, fallback: "noimage.png", size: "50x50" ) %></td>
               <td><%= user.name %></td>
               <td><%= user.nick_name %></td>
               <td><%= user.email %></td>

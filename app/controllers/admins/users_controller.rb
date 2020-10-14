@@ -15,7 +15,7 @@ class Admins::UsersController < Admins::Base
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admins_user_path(@user.id), notice: "メンバー情報を編集しました"
+      redirect_to admins_user_path(@user.id), notice: "ユーザ情報を編集しました"
     else
       render :edit
     end

@@ -1,6 +1,6 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
-<h1>お問い合わせ内容を編集してください</h1>
+<h1>お問い合わせ内容を記入してください</h1>
   <%= form_with(model: @contact, local: true) do |f| %>
 
   <%# ここからエラーメッセージ %>
@@ -17,18 +17,18 @@
   <%# ここまでエラーメッセージ %>
 
   <div class="title">
-    <%= f.label :タイトル %><br>
-    <%= f.text_field :title, placeholder: "タイトルを入力" %>
+  <%= f.label :タイトル %><br>
+    <%= f.text_field :title, placeholder: "タイトル" %>
   </div>
+
   <div class="body">
-    <%= f.label :お問い合わせ内容 %><br>
-    <%= f.text_field :body, placeholder: "お問い合わせ内容を入力" %>
+  <%= f.label :お問い合わせ内容 %><br>
+    <%= f.text_field :body, placeholder: "お問い合わせ内容" %>
   </div>
+
   <div class="submit">
-    <%= f.submit %><%= link_to "詳細へ戻る", contact_path(@contact), class: "btn-primary return" %>
+    <%= f.submit %>
   </div>
 
   <% end %>
-  
-
 </div>
