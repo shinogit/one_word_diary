@@ -28,6 +28,10 @@
           <td><%= "回答ステータス" %></td>
           <td><%= @contact.anser_status %></td>
         </tr>
+        <tr>
+          <td><%= "回答内容" %></td>
+          <td><%= @contact.anser %></td>
+        </tr>
       </table>
       <%= link_to "回答する", edit_admins_contact_path(@contact), class: "btn btn-primary link_to_btn" %>
       <%= link_to "お問い合わせ一覧に戻る", admins_contacts_path, class: "btn btn-primary link_to_btn" %>

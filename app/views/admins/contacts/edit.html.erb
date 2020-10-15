@@ -32,8 +32,14 @@
           <td class="text-center"><%= @contact.body %></td>
         </tr>
         <tr>
-          <th><%= "回答" %></th>
-          <td class="text-center"><%= f.text_field :body, class:"form-control" %></td>
+        <th><%= "回答ステータス" %></th>
+        <td class="text-center">
+            <%= f.select :anser_status, Contact.anser_statuses.keys.map {|k| [k, k]} %>
+        </td>
+        </tr>
+        <tr>
+          <th><%= "回答内容" %></th>
+          <td class="text-center"><%= f.text_area :anser, class:"form-control" %></td>
         </tr>
       </table>
       <%= f.submit "回答する", class: "btn btn-primary" %>

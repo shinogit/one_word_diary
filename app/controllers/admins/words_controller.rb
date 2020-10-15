@@ -16,7 +16,7 @@ class Admins::WordsController < Admins::Base
   def update
     @word = Word.find(params[:id])
     if @word.update(word_params)
-      redirect_to words_path, notice: "「ひとこと」を編集しました"
+      redirect_to admins_words_path, notice: "「ひとこと」を編集しました"
     else
       render :edit
     end
@@ -25,7 +25,7 @@ class Admins::WordsController < Admins::Base
   def destroy
     word = Word.find(params[:id])
     word.destroy
-    redirect_to words_path, notice:"「ひとこと」を削除しました"
+    redirect_to admins_words_path, notice:"「ひとこと」を削除しました"
   end
 
   private

@@ -9,15 +9,12 @@ class Users::CommentsController < Users::Base
     # comment = Comment.new(comment_params)
     # comment.user_id = current_user.id
     @comment.word_id = @word.id
-    
-    
-    
     if @comment.save
       redirect_to word_path(@word), notice: "コメントを登録しました"
     else
       @word = Word.find(params[:word_id])
       @comment = Comment.new
-      render "word/show"
+      render template: 'users/words/show', notice: "コメントが投稿できませんでした"
     end
   end
 

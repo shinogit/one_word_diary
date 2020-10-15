@@ -3,6 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+# is_deletedがfalseログインを禁止する
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
         
   attachment :img
 
@@ -11,7 +16,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :contacts, dependent: :destroy
 
-  validates :name, presence: true , length: { maximum: 20 }
-  validates :nick_name, presence: true , length: { maximum: 20 }
+  validates :name, presence: true , length: { maximum: 10 }
+  validates :nick_name, presence: true , length: { maximum: 10 }
+  validates :introduction, length: { maximum: 30 }
 
 end

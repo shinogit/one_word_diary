@@ -6,9 +6,10 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>お問い合わせID</th>
             <th>タイトル</th>
             <th>お問い合わせ内容</th>
+            <th>回答内容</th>
             <th></th>
             <th></th>
           </tr>
@@ -19,6 +20,7 @@
             <td><%= @contact.id %></td>
             <td><%= @contact.title %></td>
             <td><%= @contact.body %></td>
+            <td><%= @contact.anser %></td>
             <th><%= link_to "編集", edit_contact_path(@contact.id), class: "btn btn-primary" %></th>
             <th><%= link_to "削除",contact_path(@contact.id), method: :delete, data: { confirm: "お問い合わせを削除しますか？" }, class: "btn", id: "btn-delete" %></th>
 
