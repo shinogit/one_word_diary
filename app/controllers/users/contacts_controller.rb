@@ -14,17 +14,14 @@ class Users::ContactsController < Users::Base
   def new
     @contact = Contact.new
   end
-  
 
   def create
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
     if @contact.save
-      redirect_to contacts_path
+      redirect_to contact_path(@contact.id), notice: "お問い合わせを作成しました"
     else
-      @contacts = Contact.all.page(params[:page]).per(5)
-      @user = current_user
-      render :index
+      render :new
     end
   end
 

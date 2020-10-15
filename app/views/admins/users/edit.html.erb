@@ -5,17 +5,7 @@
       <%= form_with model: @user, url: admins_user_path, local: true do |f| %>
 
       <%# ここからエラーメッセージ %>
-      <% if @user.errors.any? %>
-      <div class="error_explanation">
-        <% pluralize(@user.errors.count, "error") %>
-        <p><%= "#{@user.errors.count}件エラーがあります"%></p>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-      <% end %>
+      <%= render 'users/shared/error_massages_ja', tmp: @user %>
       <%# ここまでエラーメッセージ %>
 
       <table class="table table-bordered">

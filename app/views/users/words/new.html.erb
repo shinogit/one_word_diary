@@ -1,19 +1,8 @@
 <div class="container">
   <h1>「ひとこと」書いてみよう</h1>
   <%= form_with(model: @word, local: true) do |f| %>
-  <%# ここからエラーメッセージ %>
-  <% if @word.errors.any? %>
-  <div class="error_explanation">
-    <% pluralize(@word.errors.count, "error") %>
-    <p><%= "#{@word.errors.count}件エラーがあります"%></p>
-    <ul>
-      <% @word.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <%# ここまでエラーメッセージ %>
+  <%# エラーメッセージ %>
+  <%= render 'users/shared/error_massages_ja', tmp: @word %>
   <div class="title">
     <%= f.label :タイトル %><br>
     <%= f.text_field :title, placeholder: "タイトルを入力してね" %>

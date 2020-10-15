@@ -56,19 +56,8 @@
         </h3>
       </div>
       <%= form_with(model: [@word, @comment], local:true) do |f| %>
-      <%# ここからエラーメッセージ %>
-      <% if @comment.errors.any? %>
-      <div class="error_explanation">
-        <% pluralize(@comment.errors.count, "error") %>
-        <p><%= "#{@comment.errors.count}件エラーがあります"%></p>
-        <ul>
-          <% @comment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-      <% end %>
-      <%# ここまでエラーメッセージ %>
+      <%# エラーメッセージ %>
+      <%= render 'users/shared/error_massages_ja', tmp: @comment %>
       <div class="row">
         <div class="col-sm-12">
           <%= f.text_field :body, class: "form-control", placeholder: "コメントを書いてみよう(50文字以下)" %>
