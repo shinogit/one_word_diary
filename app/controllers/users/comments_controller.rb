@@ -1,6 +1,6 @@
 class Users::CommentsController < Users::Base
 
-  before_action :ensure_correct_user,{only: [:edit,:update,:destroy]}
+  before_action :ensure_correct_user,{only: [:destroy]}
 
   def create
     @word = Word.find(params[:word_id])
@@ -14,7 +14,7 @@ class Users::CommentsController < Users::Base
     else
       @word = Word.find(params[:word_id])
       @comment = Comment.new
-      render template: 'users/words/show', notice: "コメントが投稿できませんでした"
+      render template: 'users/words/show', notice: "コメントが投稿できませんでした" # フラッシュメッセージが表示されない
     end
   end
 

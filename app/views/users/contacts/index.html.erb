@@ -1,4 +1,4 @@
-<div class="container">  
+<div class="container">
   <h1>お問い合わせ一覧</h1>
   <%= link_to "お問い合わせの投稿はこちら", new_contact_path, class: "btn btn-primary" %><br>
   <table class="table table-bordered">
@@ -9,21 +9,22 @@
         <th>回答ステータス</th>
         <th></th>
         <th></th>
-        
       </tr>
     </thead>
     <tbody> 
-    <% @contacts.each do |contact| %>
+      <% @contacts.each do |contact| %>
       <% if contact.user_id == current_user.id %>
-        <tr>
-          <td><%= contact.id %></td>
-          <td><%= contact.title %></td>
-          <td><%= contact.anser_status %></td>
-          <td><%= link_to "詳細", contact_path(contact.id), class: "btn btn-primary" %></td>
-          <td><%= link_to "削除",contact_path(contact.id), method: :delete, data: { confirm: "お問い合わせを削除しますか？" }, class: "btn", id: "btn-delete" %></td>
-        </tr>
+      <tr>
+        <td><%= contact.id %></td>
+        <td><%= contact.title %></td>
+        <td><%= contact.anser_status %></td>
+        <td><%= link_to "詳細", contact_path(contact.id), class: "btn btn-primary" %></td>
+        <td>
+          <%= link_to "削除",contact_path(contact.id), method: :delete, data: { confirm: "お問い合わせを削除しますか？" }, class: "btn", id: "btn-delete" %>
+        </td>
+      </tr>
       <% end %>
-    <% end %>
+      <% end %>
     </tbody>
   </table>
   <%= paginate @contacts %>

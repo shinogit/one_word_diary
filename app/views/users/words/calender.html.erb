@@ -3,6 +3,7 @@
 <%= link_to "「ひとこと」書く", new_word_path, class: "btn btn-primary return" %>
 <%= link_to "「ひとこと」一覧", words_path, class: "btn btn-primary return" %>
 </div>
+
 <%# ------カレンダーここから------ %>
 <%= month_calendar events: @words do |date, words| %>
 <%= date.day %>
@@ -13,7 +14,6 @@
 <% end %>
 <% end %>
 <%# ------カレンダーここまで------ %>
-
 
 <div class="container">
   <div class="row">

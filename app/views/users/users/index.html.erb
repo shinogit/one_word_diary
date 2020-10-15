@@ -8,16 +8,16 @@
 
   <section class="ftco-section ftco-agent">
     <div class="row">
-      <% @users.each do |user| %>   
-        <div class="col-md-3">
-            <div class="img"> 
-              <%= attachment_image_tag(user, :img, :fill, 210, 210, fallback: "noimage.png",size: "210x210", class: "img-fluid index-img", alt:"user_picture") %>
-            </div>
-            <div>
-              <h3 class="text-center"><%= link_to user.nick_name, user_path(user) %></h3>
-              <p><%=user.introduction %></P>
-          </div>
+      <% @users.each do |user| %>
+      <div class="col-md-3">
+        <div class="img">
+          <%= attachment_image_tag(user, :img, :fill, 210, 210, fallback: "noimage.png",size: "210x210", class: "img-fluid index-img", alt:"user_picture") %>
         </div>
+        <div>
+          <h3 class="text-center"><%= link_to user.nick_name, user_path(user) %></h3>
+          <p><%=user.introduction %></P>
+        </div>
+      </div>
       <% end %>
     </div>
   </section>

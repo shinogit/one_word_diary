@@ -59,7 +59,8 @@
       <%# ここからエラーメッセージ %>
       <% if @comment.errors.any? %>
       <div class="error_explanation">
-        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this product from being saved:</h2>
+        <% pluralize(@comment.errors.count, "error") %>
+        <p><%= "#{@comment.errors.count}件エラーがあります"%></p>
         <ul>
           <% @comment.errors.full_messages.each do |message| %>
           <li><%= message %></li>

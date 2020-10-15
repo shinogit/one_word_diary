@@ -1,11 +1,11 @@
 <div class="container">
-<h1>「ひとこと」書いてみよう</h1>
+  <h1>「ひとこと」書いてみよう</h1>
   <%= form_with(model: @word, local: true) do |f| %>
-
   <%# ここからエラーメッセージ %>
   <% if @word.errors.any? %>
   <div class="error_explanation">
-    <h2><%= pluralize(@word.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <% pluralize(@word.errors.count, "error") %>
+    <p><%= "#{@word.errors.count}件エラーがあります"%></p>
     <ul>
       <% @word.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -14,25 +14,20 @@
   </div>
   <% end %>
   <%# ここまでエラーメッセージ %>
-
   <div class="title">
-  <%= f.label :タイトル %><br>
+    <%= f.label :タイトル %><br>
     <%= f.text_field :title, placeholder: "タイトルを入力してね" %>
   </div>
-
   <div class="body">
-  <%= f.label :ひとこと %><br>
+    <%= f.label :ひとこと %><br>
     <%= f.text_field :body, placeholder: "「ひとこと」を入力してね" %>
   </div>
-
   <div class="time">
     <%= f.label :ひとこと作成日時 %>
     <%= f.datetime_select :start_time %>
   </div>
-
   <div class="submit">
     <%= f.submit %>
   </div>
-
   <% end %>
 </div>

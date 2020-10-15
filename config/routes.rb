@@ -4,15 +4,14 @@ Rails.application.routes.draw do
   get 'homes/about'
 
   # ------------------------ユーザ側------------------------
-
   scope module: :users do
     devise_for :users
     resources :users do
-      
     end
+
     resources :words do
       get :calender, on: :member 
-      resources :comments
+      resources :comments, only: [:create, :destroy]
     end
     
     resources :likes, only: [:create, :destroy]
@@ -20,7 +19,6 @@ Rails.application.routes.draw do
     
   end
   
-
   # ------------------------管理者側------------------------
   namespace :admins do
     resources :users
@@ -32,5 +30,4 @@ Rails.application.routes.draw do
     devise_for :admins
   end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
