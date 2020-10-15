@@ -6,7 +6,7 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>書いた人</th>
+            <th>投稿者</th>
             <th>日付時刻</th>
             <th>タイトル</th>
             <th>ひとこと</th>
@@ -24,7 +24,7 @@
             <td>
               <%= link_to "削除",word_path(@word.id), method: :delete, data: { confirm: "「ひとこと」を削除しますか？" }, class: "btn", id: "btn-delete" %>
             </td>
-            
+
           </tr>
         </tbody>
       </table>
@@ -48,35 +48,37 @@
           </td>
         </tr>
         <% end %>
-        <%# ここからコメント投稿フォーム %>
-        <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
-          <h3 class="section-title left">
-            <span>コメント</span>
-          </h3>
-        </div>
-        <%= form_for [@word, @comment] do |f| %>
-        <%# ここからエラーメッセージ %>
-        <% if @comment.errors.any? %>
-        <div class="error_explanation">
-          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this product from being saved:</h2>
-          <ul>
-            <% @comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-        <% end %>
-        <%# ここまでエラーメッセージ %>
-        <div class="row">
-          <div class="col-sm-12">
-            <%= f.text_field :body, class: "form-control", placeholder: "コメントを書いてみよう" %>
-          </div>
-        </div>
-        <%= f.submit class: "btn btn-primary" %>
-        <% end %>
-        <%# コメント機能ここまで %>
+      </table>
 
-        <%= link_to "「ひとこと」一覧に戻る", words_path, class: "btn btn-primary return" %>
+      <%# ここからコメント投稿フォーム %>
+      <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
+        <h3 class="section-title left">
+          <span>コメント</span>
+        </h3>
+      </div>
+      <%= form_with(model: [@word, @comment], local:true) do |f| %>
+      <%# ここからエラーメッセージ %>
+      <% if @comment.errors.any? %>
+      <div class="error_explanation">
+        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this product from being saved:</h2>
+        <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <%# ここまでエラーメッセージ %>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= f.text_field :body, class: "form-control", placeholder: "コメントを書いてみよう(50文字以下)" %>
+        </div>
+      </div>
+      <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+      <%# コメント機能ここまで %>
+      <%= link_to "「ひとこと」一覧に戻る", words_path, class: "btn btn-primary return" %>
+            <%# <%= paginate @word %> %>
     </div>
   </div>
 </div>

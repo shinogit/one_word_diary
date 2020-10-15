@@ -15,7 +15,7 @@ class Admins::ContactsController < Admins::Base
   def update
     @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
-      redirect_to contacts_path, notice: "「ひとこと」を編集しました"
+      redirect_to admins_contact_path(@contact.id), notice: "お問い合わせを編集しました"
     else
       render :edit
     end
@@ -24,13 +24,13 @@ class Admins::ContactsController < Admins::Base
   def destroy
     contact = Contact.find(params[:id])
     contact.destroy
-    redirect_to contacts_path, notice:"「ひとこと」を削除しました"
+    redirect_to admins_contacts_path, notice: "お問い合わせを削除しました"
   end
 
   private
   
   def contact_params
-    params.require(:contact).permit(:title, :body)
+    params.require(:contact).permit(:title, :body, :anser, :anser_status)
   end
 
 end

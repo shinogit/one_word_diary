@@ -1,21 +1,19 @@
+<%= flash[:alert]%>
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
-
     <!-- Icon -->
     <div class="fadeIn first">
       <%= image_tag "icon_login_bk.svg", id: "icon", alt: "User Icon", size: "30x30" %>
       <p>新規登録</p>
     </div>
-
     <!-- Login Form -->
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
     <div class="field">
-      <%= f.text_field :name, autofocus: true, autocomplete: "name", id: "login", class: "fadeIn second", placeholder: "名前" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", id: "login", class: "fadeIn second", placeholder: "名前(10文字以下)" %>
     </div>
     <div class="field">
-      <%= f.text_field :nick_name, autocomplete: "nick_name", id: "login", class: "fadeIn second", placeholder: "ニックネーム" %>
+      <%= f.text_field :nick_name, autocomplete: "nick_name", id: "login", class: "fadeIn second", placeholder: "ニックネーム(10文字以下)" %>
     </div>
     <div class="field">
       <%= f.email_field :email, autocomplete: "email", id: "login", class: "fadeIn second", placeholder: "メールアドレス" %>
@@ -29,8 +27,6 @@
     <div class="actions">
       <%= f.submit "新規登録", class: "fadeIn fourth" %>
     </div>
-
-  <% end %>
-
+    <% end %>
   </div>
 </div>
