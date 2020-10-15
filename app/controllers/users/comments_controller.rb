@@ -13,7 +13,6 @@ class Users::CommentsController < Users::Base
       redirect_to word_path(@word), notice: "コメントを登録しました"
     else
       @word = Word.find(params[:word_id])
-      @comment = Comment.new
       render template: 'users/words/show', notice: "コメントが投稿できませんでした" # フラッシュメッセージが表示されない
     end
   end

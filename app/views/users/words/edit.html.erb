@@ -1,23 +1,12 @@
 <%= form_with(model: @word, local: true) do |f| %>
-<%# ここからエラーメッセージ %>
-<% if @word.errors.any? %>
-<div class="error_explanation">
-  <% pluralize(@word.errors.count, "error") %>
-  <p><%= "#{@word.errors.count}件エラーがあります"%></p>
-  <ul>
-    <% @word.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-<%# ここまでエラーメッセージ %>
+<%# エラーメッセージ %>
+<%= render 'users/shared/error_massages_ja', tmp: @word %>
 <div class="title">
-  <%= f.label :title %>
+  <%= f.label :title %><br>
   <%= f.text_field :title, placeholder: "タイトルを入力してね" %>
 </div>
 <div class="body">
-  <%= f.label :body %>
+  <%= f.label :body %><br>
   <%= f.text_field :body, placeholder: "「ひとこと」を入力してね" %>
 </div>
 <div class="time">

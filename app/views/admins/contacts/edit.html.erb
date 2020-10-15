@@ -3,21 +3,8 @@
     <div class="col-xs-6 admins_contact_edit">
       <h1><%= "「#{@contact.title}」のへ回答" %></h1>
       <%= form_with model: @contact, url: admins_contact_path, local: true do |f| %>
-
-      <%# ここからエラーメッセージ %>
-      <% if @contact.errors.any? %>
-      <div class="error_explanation">
-        <% pluralize(@contact.errors.count, "error") %>
-        <p><%= "#{@contact.errors.count}件エラーがあります"%></p>
-        <ul>
-          <% @contact.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-      <% end %>
-      <%# ここまでエラーメッセージ %>
-
+      <%# エラーメッセージ %>
+      <%= render 'users/shared/error_massages_ja', tmp: @contact %>
       <table class="table table-bordered">
         <tr>
           <th><%= "お問い合わせID" %></th>
@@ -34,7 +21,9 @@
         <tr>
         <th><%= "回答ステータス" %></th>
         <td class="text-center">
-            <%= f.select :anser_status, Contact.anser_statuses.keys.map {|k| [k, k]} %>
+        <%# .pluckで:anser_statusの中身すべて(.distinctで重複を削除)を配列で返し、.sortで配列を昇順にして返している
+        （今回の場合[0,1]が返されてそれがenumにより"回答待ち"と"回答済み"で表示されている） %>
+            <%= f.select :anser_status, Contact.distinct.pluck(:anser_status).sort %>
         </td>
         </tr>
         <tr>
