@@ -1,7 +1,6 @@
 class Contact < ApplicationRecord
 
   belongs_to :user
-  has_one :contact_anser
 
 	enum anser_status: {
     回答待ち: 0,

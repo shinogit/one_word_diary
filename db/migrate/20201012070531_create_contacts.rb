@@ -3,6 +3,7 @@ class CreateContacts < ActiveRecord::Migration[5.2]
     create_table :contacts do |t|
       t.string :title,        null: false, default: ""
       t.string :body,         null: false, default: ""
+      t.string :anser
       t.integer :anser_status,             default: 0
       t.integer :user_id
 
