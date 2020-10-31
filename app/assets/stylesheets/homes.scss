@@ -182,7 +182,7 @@ header nav li:last-child{
 	background-size: cover;
 	background-color: #2196F3;
 	z-index: -1;
-	background-image: image-url("top-book.jpg");
+	background-image: asset-url("top-book.jpg");
   background-size:cover;
 }
 
@@ -195,7 +195,7 @@ header nav li:last-child{
 	height: 100%;
 	background-color: #414a4f;
 	opacity: 0.75;
-	background-image: image-url("top-book.jpg");
+	background-image: asset-url("top-book.jpg");
   background-size:cover;
 }
 
