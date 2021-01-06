@@ -25,12 +25,17 @@
 
 ## 設計書
 
+### ER図
+
 ![ER図](design/er.drawio.png)
+
+### AWS構成図
+
+![ER図](design/aws_design.png)
 
 ### 機能一覧
 
-[チャレンジ要素一覧(クラウド教養コース)](https://docs.google.com/spreadsheets/d/1gAUX7nUgGQcHxTco8k9G9bPhlAolf_Xa7C8ZmYxR2YY/edit?usp=sharing)  
-基本的にはbookers2のワイヤーフレームを骨格にしてカレンダー機能等を付け足していく予定です。
+[チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/1gAUX7nUgGQcHxTco8k9G9bPhlAolf_Xa7C8ZmYxR2YY/edit?usp=sharing)  
 
 ## 開発環境
 
